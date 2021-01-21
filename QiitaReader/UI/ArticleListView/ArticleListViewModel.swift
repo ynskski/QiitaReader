@@ -10,6 +10,7 @@ import Foundation
 
 final class ArticleListViewModel: ObservableObject {
     @Published var articles: [Article] = []
+    @Published var isLoading = false
     
     private let qiitaApiClient = QiitaAPIClient.shared
     
@@ -20,6 +21,8 @@ final class ArticleListViewModel: ObservableObject {
     }
     
     func loadArticles(page: Int) {
+        isLoading = true
+        
         qiitaApiClient
             .fetchArticle(page: page)
             .sink(receiveCompletion: { completion in
@@ -29,6 +32,8 @@ final class ArticleListViewModel: ObservableObject {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
+                
+                self.isLoading = false
             }, receiveValue: { articles in
                 self.articles += articles
             })
