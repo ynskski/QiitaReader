@@ -25,8 +25,28 @@ struct ArticleRowView: View {
             Text(article.title)
                 .font(.headline)
             
-            Text("LGTM: \(article.likesCount)")
-                .font(.caption)
+            HStack {
+                Image(systemName: "tag")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 15, height: 15)
+                
+                ForEach(article.tags, id: \.self) { tag in
+                    Text(tag.name)
+                        .lineLimit(0)
+                        .font(.caption)
+                }
+            }
+            
+            HStack {
+                Image(systemName: "hand.thumbsup")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 15, height: 15)
+                
+                Text("\(article.likesCount)")
+                    .font(.caption)
+            }
         }.padding(4)
     }
     
