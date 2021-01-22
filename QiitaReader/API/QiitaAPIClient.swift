@@ -37,6 +37,26 @@ final class QiitaAPIClient: APIClient {
             .eraseToAnyPublisher()
     }
     
+    func fetchArticle(page: Int, query: String) -> AnyPublisher<[Article], Error> {
+        var urlComponents = URLComponents(string: "\(baseURL)/items")!
+        let queryItems = [
+            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "per_page", value: "50"),
+            URLQueryItem(name: "query", value: query)
+        ]
+        urlComponents.queryItems = queryItems
+        let request = URLRequest(url: urlComponents.url!)
+        
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                try self.throwResponseError(response, data: data)
+                return data
+            }
+            .decode(type: [Article].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchProfileImage(url: URL) -> AnyPublisher<UIImage, Error> {
         let request = URLRequest(url: url)
         

@@ -39,4 +39,25 @@ final class ArticleListViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
+    
+    func loadArticles(page: Int, query: String) {
+        isLoading = true
+        
+        qiitaApiClient
+            .fetchArticle(page: page, query: query)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+                self.isLoading = false
+            }, receiveValue: { articles in
+                // TODO: - 追加の方法を考える
+                self.articles = articles
+            })
+            .store(in: &cancellables)
+    }
 }
