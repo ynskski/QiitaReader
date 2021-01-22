@@ -9,6 +9,7 @@ import Foundation
 
 struct Article: Decodable, Identifiable {
     var id: String
+    var createdAt: String
     var title: String
     var likesCount: Int
     var url: String
@@ -16,6 +17,7 @@ struct Article: Decodable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
+        case createdAt = "created_at"
         case title
         case likesCount = "likes_count"
         case url

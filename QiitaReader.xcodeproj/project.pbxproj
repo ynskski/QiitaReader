@@ -19,6 +19,7 @@
 		0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2E525B9A7C8001F112A /* APIClientError.swift */; };
 		0247E2EA25B9BDF8001F112A /* ErrorResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2E925B9BDF8001F112A /* ErrorResponseBody.swift */; };
 		0247E2F325B9CBFB001F112A /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2F225B9CBFB001F112A /* ActivityIndicatorView.swift */; };
+		0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2F725B9E297001F112A /* ArticleRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0247E2E525B9A7C8001F112A /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 		0247E2E925B9BDF8001F112A /* ErrorResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseBody.swift; sourceTree = "<group>"; };
 		0247E2F225B9CBFB001F112A /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		0247E2F725B9E297001F112A /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				0247E2F125B9CB68001F112A /* ActivityIndicator */,
+				0247E2F625B9E274001F112A /* ArticleRowView */,
 				0247E2F025B9CB58001F112A /* ArticleListView */,
 			);
 			path = UI;
@@ -139,6 +142,14 @@
 				0247E2F225B9CBFB001F112A /* ActivityIndicatorView.swift */,
 			);
 			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		0247E2F625B9E274001F112A /* ArticleRowView */ = {
+			isa = PBXGroup;
+			children = (
+				0247E2F725B9E297001F112A /* ArticleRowView.swift */,
+			);
+			path = ArticleRowView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 				0247E2E225B9A272001F112A /* ArticleListViewModel.swift in Sources */,
 				0247E2DE25B9A251001F112A /* ArticleListView.swift in Sources */,
 				0247E2D225B97646001F112A /* User.swift in Sources */,
+				0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */,
 				0247E2BD25B97465001F112A /* QiitaReaderApp.swift in Sources */,
 				0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */,
 				0247E2D725B977F0001F112A /* APIClient.swift in Sources */,

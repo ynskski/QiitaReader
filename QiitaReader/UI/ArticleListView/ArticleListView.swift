@@ -16,7 +16,7 @@ struct ArticleListView: View {
                 Form {
                     Section {
                         ForEach(viewModel.articles) { article in
-                            Text(article.title)
+                            ArticleRowView(article: article)
                         }
                     }
                 }
