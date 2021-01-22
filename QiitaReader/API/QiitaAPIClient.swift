@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 final class QiitaAPIClient: APIClient {
     private(set) static var shared: QiitaAPIClient = .init(baseURL: "https://qiita.com/api/v2")
@@ -32,6 +33,18 @@ final class QiitaAPIClient: APIClient {
                 return data
             }
             .decode(type: [Article].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchProfileImage(url: URL) -> AnyPublisher<UIImage, Error> {
+        let request = URLRequest(url: url)
+        
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                try self.throwResponseError(response, data: data)
+                return UIImage(data: data) ?? UIImage(systemName: "photo")!
+            }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
