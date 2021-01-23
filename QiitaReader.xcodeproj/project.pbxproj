@@ -22,6 +22,7 @@
 		0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2F725B9E297001F112A /* ArticleRowView.swift */; };
 		0247E30025BACE26001F112A /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2FF25BACE26001F112A /* ProfileImageView.swift */; };
 		0247E30425BACE40001F112A /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E30325BACE40001F112A /* ProfileImageViewModel.swift */; };
+		0247E33125BC5BC6001F112A /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E33025BC5BC6001F112A /* HomeTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0247E2F725B9E297001F112A /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		0247E2FF25BACE26001F112A /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		0247E30325BACE40001F112A /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
+		0247E33025BC5BC6001F112A /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		0247E2DC25B9A23D001F112A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0247E32F25BC5BA9001F112A /* HomeTabView */,
 				0247E2FE25BACE15001F112A /* ProfileImageView */,
 				0247E2F125B9CB68001F112A /* ActivityIndicator */,
 				0247E2F625B9E274001F112A /* ArticleRowView */,
@@ -164,6 +167,14 @@
 				0247E30325BACE40001F112A /* ProfileImageViewModel.swift */,
 			);
 			path = ProfileImageView;
+			sourceTree = "<group>";
+		};
+		0247E32F25BC5BA9001F112A /* HomeTabView */ = {
+			isa = PBXGroup;
+			children = (
+				0247E33025BC5BC6001F112A /* HomeTabView.swift */,
+			);
+			path = HomeTabView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 				0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */,
 				0247E2BD25B97465001F112A /* QiitaReaderApp.swift in Sources */,
 				0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */,
+				0247E33125BC5BC6001F112A /* HomeTabView.swift in Sources */,
 				0247E2D725B977F0001F112A /* APIClient.swift in Sources */,
 				0247E2CE25B975BA001F112A /* Article.swift in Sources */,
 			);
