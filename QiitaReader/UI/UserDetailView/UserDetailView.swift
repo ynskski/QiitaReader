@@ -36,7 +36,7 @@ struct UserDetailView: View {
             .foregroundColor(Color.white)
             .background(Color.green)
             .sheet(isPresented: $isPresentedOauthPage) {
-                WebView(url: UserAuthenticator.oauthUrlString)
+                WebView(url: QiitaAPIClient.oauthUrlString, isPresented: $isPresentedOauthPage)
             }
         }
     }

@@ -18,6 +18,15 @@ final class QiitaAPIClient: APIClient {
         self.baseURL = baseURL
     }
     
+    static var oauthUrlString: String {
+        let env = ProcessInfo.processInfo.environment
+        if let client_id = env["client_id"] {
+            return "https://qiita.com/api/v2/oauth/authorize?client_id=\(client_id)&scope=read_qiita"
+        } else {
+            fatalError("Error: No access token")
+        }
+    }
+    
     func fetchArticle(page: Int) -> AnyPublisher<[Article], Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/items")!
         let queryItems = [
