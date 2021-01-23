@@ -15,6 +15,12 @@ struct HomeTabView: View {
                     Image(systemName: "doc.text")
                     Text("記事")
                 }
+            
+            UserDetailView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("ユーザー")
+                }
         }
     }
 }

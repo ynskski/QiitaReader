@@ -23,6 +23,7 @@
 		0247E30025BACE26001F112A /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E2FF25BACE26001F112A /* ProfileImageView.swift */; };
 		0247E30425BACE40001F112A /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E30325BACE40001F112A /* ProfileImageViewModel.swift */; };
 		0247E33125BC5BC6001F112A /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E33025BC5BC6001F112A /* HomeTabView.swift */; };
+		0247E33625BC5E0F001F112A /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E33525BC5E0F001F112A /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		0247E2FF25BACE26001F112A /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		0247E30325BACE40001F112A /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
 		0247E33025BC5BC6001F112A /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		0247E33525BC5E0F001F112A /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		0247E2DC25B9A23D001F112A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0247E33425BC5DE9001F112A /* UserDetailView */,
 				0247E32F25BC5BA9001F112A /* HomeTabView */,
 				0247E2FE25BACE15001F112A /* ProfileImageView */,
 				0247E2F125B9CB68001F112A /* ActivityIndicator */,
@@ -175,6 +178,14 @@
 				0247E33025BC5BC6001F112A /* HomeTabView.swift */,
 			);
 			path = HomeTabView;
+			sourceTree = "<group>";
+		};
+		0247E33425BC5DE9001F112A /* UserDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				0247E33525BC5E0F001F112A /* UserDetailView.swift */,
+			);
+			path = UserDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */,
 				0247E33125BC5BC6001F112A /* HomeTabView.swift in Sources */,
 				0247E2D725B977F0001F112A /* APIClient.swift in Sources */,
+				0247E33625BC5E0F001F112A /* UserDetailView.swift in Sources */,
 				0247E2CE25B975BA001F112A /* Article.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
