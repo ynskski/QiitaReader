@@ -35,6 +35,11 @@ struct ArticleListView: View {
                     }
                 }
             }
+            .onAppear {
+                if viewModel.articles.isEmpty {
+                    viewModel.loadArticles(page: 1)
+                }
+            }
             .overlay(viewModel.isLoading ? AnyView(LoadingView()) : AnyView(EmptyView()))
             .navigationTitle("Articles")
         }

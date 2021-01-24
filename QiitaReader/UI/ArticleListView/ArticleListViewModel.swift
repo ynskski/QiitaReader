@@ -16,10 +16,6 @@ final class ArticleListViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     
-    init() {
-        loadArticles(page: 1)
-    }
-    
     func loadArticles(page: Int) {
         isLoading = true
         
