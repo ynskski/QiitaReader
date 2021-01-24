@@ -16,8 +16,8 @@ struct UserDetailView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if let token = UserAuthenticator.accessToken {
-                    Text(token)
+                if let user = UserAuthenticator.authenticatedUser {
+                    Text(user.id)
                 } else {
                     requireLoginView
                 }

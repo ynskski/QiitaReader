@@ -57,6 +57,21 @@ final class QiitaAPIClient: APIClient {
             .eraseToAnyPublisher()
     }
     
+    func fetchAuthenticatedUser(token: String) -> AnyPublisher<AuthenticatedUser, Error> {
+        let urlComponents = URLComponents(string: "\(baseURL)/authenticated_user")!
+        var request = URLRequest(url: urlComponents.url!)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                try self.throwResponseError(response, data: data)
+                return data
+            }
+            .decode(type: AuthenticatedUser.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchArticle(page: Int) -> AnyPublisher<[Article], Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/items")!
         let queryItems = [

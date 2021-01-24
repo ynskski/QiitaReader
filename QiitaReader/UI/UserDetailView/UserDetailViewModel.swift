@@ -39,11 +39,32 @@ final class UserDetailViewModel: ObservableObject {
                 self.isLoading = false
             }, receiveValue: { accessTokenResponse in
                 UserAuthenticator.accessToken = accessTokenResponse.token
+                self.loadUser()
             })
             .store(in: &cancellables)
     }
     
     private func loadUser() {
+        guard let token = UserAuthenticator.accessToken else {
+            return
+        }
         
+        isLoading = true
+        
+        qiitaApiClient
+            .fetchAuthenticatedUser(token: token)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+                self.isLoading = false
+            }, receiveValue: { user in
+                UserAuthenticator.authenticatedUser = user
+            })
+            .store(in: &cancellables)
     }
 }
