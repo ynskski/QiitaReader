@@ -26,6 +26,18 @@ struct Article: Decodable, Identifiable {
         case user
     }
     
+    struct User: Decodable, Identifiable {
+        var id: String
+        var name: String
+        var profileImageURL: String
+        
+        enum CodingKeys: String, CodingKey {
+            case id
+            case name
+            case profileImageURL = "profile_image_url"
+        }
+    }
+    
     struct Tag: Decodable, Hashable {
         var name: String
         

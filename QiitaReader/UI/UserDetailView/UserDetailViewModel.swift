@@ -15,6 +15,10 @@ final class UserDetailViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     
+    var user: AuthenticatedUser? {
+        UserAuthenticator.authenticatedUser
+    }
+    
     func login() {
         guard let code = UserAuthenticator.authenticationCode else {
             return
@@ -37,5 +41,9 @@ final class UserDetailViewModel: ObservableObject {
                 UserAuthenticator.accessToken = accessTokenResponse.token
             })
             .store(in: &cancellables)
+    }
+    
+    private func loadUser() {
+        
     }
 }

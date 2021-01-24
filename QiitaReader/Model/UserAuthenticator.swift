@@ -12,5 +12,5 @@ struct UserAuthenticator {
     
     static var authenticationCode: String? = nil
     static var accessToken: String? = nil
-    static var authenticatedUser: User? = nil
+    static var authenticatedUser: AuthenticatedUser? = nil
 }

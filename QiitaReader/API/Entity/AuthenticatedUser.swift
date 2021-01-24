@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  AuthenticatedUser.swift
 //  QiitaReader
 //
 //  Created by YunosukeSakai on 2021/01/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable, Identifiable {
+struct AuthenticatedUser: Decodable, Identifiable {
     var id: String
     var name: String
     var profileImageURL: String
