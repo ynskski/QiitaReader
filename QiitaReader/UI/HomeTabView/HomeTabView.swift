@@ -10,16 +10,16 @@ import SwiftUI
 struct HomeTabView: View {
     var body: some View {
         TabView {
-            ArticleListView()
-                .tabItem {
-                    Image(systemName: "doc.text")
-                    Text("記事")
-                }
-            
             UserDetailView()
                 .tabItem {
                     Image(systemName: "person")
                     Text("ユーザー")
+                }
+
+            ArticleListView()
+                .tabItem {
+                    Image(systemName: "doc.text")
+                    Text("記事")
                 }
         }
     }

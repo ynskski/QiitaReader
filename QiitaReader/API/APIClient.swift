@@ -13,5 +13,6 @@ protocol APIClient {
     func fetchAuthenticatedUser(token: String) -> AnyPublisher<AuthenticatedUser, Error>
     func fetchArticle(page: Int) -> AnyPublisher<[Article], Error>
     func fetchArticle(page: Int, query: String) -> AnyPublisher<[Article], Error>
+    func fetchArticle(with token: String, page: Int) -> AnyPublisher<[Article], Error>
     func fetchProfileImage(url: URL) -> AnyPublisher<UIImage, Error>
 }

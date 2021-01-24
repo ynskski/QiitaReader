@@ -14,6 +14,7 @@ struct ArticleRowView: View {
         VStack(alignment: .leading) {
             HStack {
                 ProfileImageView(imageURL: article.user.profileImageURL)
+                    .frame(width: 20, height: 20)
                 
                 Text("@\(article.user.id)")
                     .font(.caption)

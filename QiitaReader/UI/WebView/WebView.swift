@@ -40,9 +40,11 @@ extension WebView {
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            if let url = navigationAction.request.url, let code = getQueryCode(url) {
-                UserAuthenticator.authenticationCode = code
-                parent.isPresented.toggle()
+            if navigationAction.request.url?.scheme == "qiita-reader" {
+                if let url = navigationAction.request.url, let code = getQueryCode(url) {
+                    UserAuthenticator.authenticationCode = code
+                    parent.isPresented.toggle()
+                }
             }
 
             decisionHandler(WKNavigationActionPolicy.allow)

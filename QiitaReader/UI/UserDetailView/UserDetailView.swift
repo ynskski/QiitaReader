@@ -17,7 +17,7 @@ struct UserDetailView: View {
         NavigationView {
             VStack {
                 if let user = UserAuthenticator.authenticatedUser {
-                    Text(user.id)
+                    userInfoView(user)
                 } else {
                     requireLoginView
                 }
@@ -27,6 +27,59 @@ struct UserDetailView: View {
         }
     }
     
+    func userInfoView(_ user: AuthenticatedUser) -> some View {
+        Form {
+            Section {
+                HStack {
+                    Spacer()
+                    
+                    VStack(alignment: .center) {
+                        ProfileImageView(imageURL: user.profileImageURL)
+                            .frame(width: 60, height: 60)
+                        
+                        Text("@\(user.id)")
+                            .font(.callout)
+                        
+                        HStack {
+                            if let githubId = user.githubId {
+                                socialIconView("GitHub", id: githubId)
+                            }
+                            
+                            if let twitterId = user.twitterId {
+                                socialIconView("Twitter", id: twitterId)
+                            }
+                        }
+                        
+                        Text(user.description)
+                    }
+                    .padding(4)
+                    
+                    Spacer()
+                }
+            }
+            
+            Section(header: Text("my articles")) {
+                ForEach(viewModel.articles) { article in
+                    ArticleRowView(article: article)
+                }
+            }
+        }
+        .onAppear {
+            if viewModel.articles.isEmpty {
+                viewModel.loadArticles()
+            }
+        }
+    }
+    
+    func socialIconView(_ service: String, id: String) -> some View {
+        VStack(alignment: .center) {
+            Image(service)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 30)
+        }
+    }
+
     var requireLoginView: some View {
         VStack {
             Button {

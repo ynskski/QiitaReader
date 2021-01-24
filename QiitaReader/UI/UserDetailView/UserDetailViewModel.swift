@@ -10,6 +10,7 @@ import Foundation
 
 final class UserDetailViewModel: ObservableObject {
     @Published var isLoading = false
+    @Published var articles: [Article] = []
     
     private let qiitaApiClient = QiitaAPIClient.shared
     
@@ -40,6 +41,30 @@ final class UserDetailViewModel: ObservableObject {
             }, receiveValue: { accessTokenResponse in
                 UserAuthenticator.accessToken = accessTokenResponse.token
                 self.loadUser()
+            })
+            .store(in: &cancellables)
+    }
+    
+    func loadArticles() {
+        guard let token = UserAuthenticator.accessToken else {
+            return
+        }
+        
+        isLoading = true
+        
+        qiitaApiClient
+            .fetchArticle(with: token, page: 1)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+                self.isLoading = false
+            }, receiveValue: { articles in
+                self.articles = articles
             })
             .store(in: &cancellables)
     }
