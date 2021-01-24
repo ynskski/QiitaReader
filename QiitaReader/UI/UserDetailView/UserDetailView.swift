@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserDetailView: View {
     @State private var isPresentedOauthPage = false
+    @State private var isPresentedAlert = false
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,11 @@ struct UserDetailView: View {
     var requireLoginView: some View {
         VStack {
             Button {
-                isPresentedOauthPage.toggle()
+                if QiitaAPIClient.oauthUrlString != nil {
+                    isPresentedOauthPage.toggle()
+                } else {
+                    isPresentedAlert.toggle()
+                }
             } label: {
                 Text("ログイン")
                     .font(.headline)
@@ -36,7 +41,10 @@ struct UserDetailView: View {
             .foregroundColor(Color.white)
             .background(Color.green)
             .sheet(isPresented: $isPresentedOauthPage) {
-                WebView(url: QiitaAPIClient.oauthUrlString, isPresented: $isPresentedOauthPage)
+                WebView(url: QiitaAPIClient.oauthUrlString!, isPresented: $isPresentedOauthPage)
+            }
+            .alert(isPresented: $isPresentedAlert) {
+                Alert(title: Text("No client_id"), message: nil, dismissButton: .cancel())
             }
         }
     }
