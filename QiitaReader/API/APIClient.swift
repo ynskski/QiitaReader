@@ -9,6 +9,7 @@ import Combine
 import UIKit
 
 protocol APIClient {
+    func fetchAccessToken(code: String) -> AnyPublisher<AccessTokenResponseBody, Error>
     func fetchArticle(page: Int) -> AnyPublisher<[Article], Error>
     func fetchArticle(page: Int, query: String) -> AnyPublisher<[Article], Error>
     func fetchProfileImage(url: URL) -> AnyPublisher<UIImage, Error>

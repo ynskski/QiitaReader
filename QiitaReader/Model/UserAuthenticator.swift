@@ -11,5 +11,6 @@ struct UserAuthenticator {
     private init() {}
     
     static var authenticationCode: String? = nil
+    static var accessToken: String? = nil
     static var authenticatedUser: User? = nil
 }

@@ -10,6 +10,7 @@ import Foundation
 enum APIClientError: LocalizedError {
     case unexpectedStatusCode(Int)
     case message(String, String, Int)
+    case noClientIdOrSecret
     
     var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ enum APIClientError: LocalizedError {
             return "Unexpected Status Code: \(statusCode)"
         case let .message(message, type, statusCode):
             return "Error: \(message), \(type), \(statusCode)"
+        case .noClientIdOrSecret:
+            return "No client_id or client_secret"
         }
     }
 }

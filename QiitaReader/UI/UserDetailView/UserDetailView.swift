@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct UserDetailView: View {
+    @ObservedObject var viewModel = UserDetailViewModel()
+    
     @State private var isPresentedOauthPage = false
     @State private var isPresentedAlert = false
     
     var body: some View {
         NavigationView {
             VStack {
-                if let user = UserAuthenticator.authenticatedUser {
-                    Text(user.id)
+                if let token = UserAuthenticator.accessToken {
+                    Text(token)
                 } else {
                     requireLoginView
                 }
             }
+            .overlay(viewModel.isLoading ? AnyView(LoadingView()) : AnyView(EmptyView()))
             .navigationTitle("User")
         }
     }
@@ -40,8 +43,12 @@ struct UserDetailView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .foregroundColor(Color.white)
             .background(Color.green)
+            .disabled(viewModel.isLoading)
             .sheet(isPresented: $isPresentedOauthPage) {
                 WebView(url: QiitaAPIClient.oauthUrlString!, isPresented: $isPresentedOauthPage)
+                    .onDisappear {
+                        viewModel.login()
+                    }
             }
             .alert(isPresented: $isPresentedAlert) {
                 Alert(title: Text("No client_id"), message: nil, dismissButton: .cancel())

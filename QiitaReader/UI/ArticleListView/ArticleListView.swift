@@ -35,14 +35,8 @@ struct ArticleListView: View {
                     }
                 }
             }
-            .overlay(viewModel.isLoading ? AnyView(loadingView) : AnyView(EmptyView()))
+            .overlay(viewModel.isLoading ? AnyView(LoadingView()) : AnyView(EmptyView()))
             .navigationTitle("Articles")
-        }
-    }
-    
-    var loadingView: some View {
-        VStack {
-            ActivityIndicatorView(isLoading: .constant(true), style: .medium)
         }
     }
 }

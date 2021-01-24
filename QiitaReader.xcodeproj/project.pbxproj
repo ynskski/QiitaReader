@@ -26,6 +26,9 @@
 		0247E33625BC5E0F001F112A /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E33525BC5E0F001F112A /* UserDetailView.swift */; };
 		0247E33C25BC67E7001F112A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E33B25BC67E7001F112A /* WebView.swift */; };
 		0247E34425BC8424001F112A /* UserAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34325BC8424001F112A /* UserAuthenticator.swift */; };
+		0247E34925BD54E3001F112A /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34825BD54E3001F112A /* UserDetailViewModel.swift */; };
+		0247E34C25BD5B03001F112A /* AccessTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */; };
+		0247E34F25BD5C1F001F112A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34E25BD5C1F001F112A /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		0247E33525BC5E0F001F112A /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		0247E33B25BC67E7001F112A /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		0247E34325BC8424001F112A /* UserAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticator.swift; sourceTree = "<group>"; };
+		0247E34825BD54E3001F112A /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenResponseBody.swift; sourceTree = "<group>"; };
+		0247E34E25BD5C1F001F112A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				0247E2E925B9BDF8001F112A /* ErrorResponseBody.swift */,
+				0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */,
 			);
 			path = ResponseBody;
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				0247E2F225B9CBFB001F112A /* ActivityIndicatorView.swift */,
+				0247E34E25BD5C1F001F112A /* LoadingView.swift */,
 			);
 			path = ActivityIndicator;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0247E33525BC5E0F001F112A /* UserDetailView.swift */,
+				0247E34825BD54E3001F112A /* UserDetailViewModel.swift */,
 			);
 			path = UserDetailView;
 			sourceTree = "<group>";
@@ -279,17 +288,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0247E34925BD54E3001F112A /* UserDetailViewModel.swift in Sources */,
 				0247E30425BACE40001F112A /* ProfileImageViewModel.swift in Sources */,
 				0247E33C25BC67E7001F112A /* WebView.swift in Sources */,
 				0247E2DA25B97961001F112A /* QiitaAPIClient.swift in Sources */,
 				0247E2F325B9CBFB001F112A /* ActivityIndicatorView.swift in Sources */,
 				0247E2EA25B9BDF8001F112A /* ErrorResponseBody.swift in Sources */,
+				0247E34C25BD5B03001F112A /* AccessTokenResponseBody.swift in Sources */,
 				0247E30025BACE26001F112A /* ProfileImageView.swift in Sources */,
 				0247E34425BC8424001F112A /* UserAuthenticator.swift in Sources */,
 				0247E2E225B9A272001F112A /* ArticleListViewModel.swift in Sources */,
 				0247E2DE25B9A251001F112A /* ArticleListView.swift in Sources */,
 				0247E2D225B97646001F112A /* User.swift in Sources */,
 				0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */,
+				0247E34F25BD5C1F001F112A /* LoadingView.swift in Sources */,
 				0247E2BD25B97465001F112A /* QiitaReaderApp.swift in Sources */,
 				0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */,
 				0247E33125BC5BC6001F112A /* HomeTabView.swift in Sources */,

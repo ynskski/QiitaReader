@@ -12,7 +12,7 @@ import UIKit
 final class QiitaAPIClient: APIClient {
     private(set) static var shared: QiitaAPIClient = .init(baseURL: "https://qiita.com/api/v2")
     
-    let baseURL: String
+    private let baseURL: String
     
     init(baseURL: String) {
         self.baseURL = baseURL
@@ -25,6 +25,36 @@ final class QiitaAPIClient: APIClient {
         } else {
             return nil
         }
+    }
+    
+    func fetchAccessToken(code: String) -> AnyPublisher<AccessTokenResponseBody, Error> {
+        var urlComponents = URLComponents(string: "\(baseURL)/access_tokens")!
+        
+        let env = ProcessInfo.processInfo.environment
+        guard let client_id = env["client_id"], let client_secret = env["client_secret"] else {
+            return Fail(error: APIClientError.noClientIdOrSecret).eraseToAnyPublisher()
+        }
+        
+        let queryItems = [
+            URLQueryItem(name: "client_id", value: client_id),
+            URLQueryItem(name: "client_secret", value: client_secret),
+            URLQueryItem(name: "code", value: code)
+        ]
+        urlComponents.queryItems = queryItems
+        
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "ACCEPT")
+        
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                try self.throwResponseError(response, data: data)
+                return data
+            }
+            .decode(type: AccessTokenResponseBody.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     func fetchArticle(page: Int) -> AnyPublisher<[Article], Error> {
