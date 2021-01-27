@@ -51,6 +51,30 @@ struct UserDetailView: View {
                         }
                         
                         Text(user.description)
+                        
+                        HStack {
+                            VStack(alignment: .center) {
+                                Text("\(user.itemsCount)")
+                                    .font(.body)
+                                Text("　投稿数　")
+                                    .font(.caption)
+                            }
+
+                            VStack(alignment: .center) {
+                                Text("\(user.followeesCount)")
+                                    .font(.body)
+                                Text("　フォロー　")
+                                    .font(.caption)
+                            }
+
+                            VStack(alignment: .center) {
+                                Text("\(user.followersCount)")
+                                    .font(.body)
+                                Text("フォロワー")
+                                    .font(.caption)
+                            }
+                        }
+                        .padding(.top)
                     }
                     .padding(4)
                     

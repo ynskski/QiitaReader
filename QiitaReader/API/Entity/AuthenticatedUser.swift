@@ -13,6 +13,9 @@ struct AuthenticatedUser: Decodable, Identifiable {
     var githubId: String?
     var twitterId: String?
     var description: String
+    var itemsCount: Int
+    var followeesCount: Int
+    var followersCount: Int
     var profileImageURL: String
     
     enum CodingKeys: String, CodingKey {
@@ -21,6 +24,9 @@ struct AuthenticatedUser: Decodable, Identifiable {
         case githubId = "github_login_name"
         case twitterId = "twitter_screen_name"
         case description
+        case itemsCount = "items_count"
+        case followeesCount = "followees_count"
+        case followersCount = "followers_count"
         case profileImageURL = "profile_image_url"
     }
 }
