@@ -29,6 +29,7 @@
 		0247E34925BD54E3001F112A /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34825BD54E3001F112A /* UserDetailViewModel.swift */; };
 		0247E34C25BD5B03001F112A /* AccessTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */; };
 		0247E34F25BD5C1F001F112A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34E25BD5C1F001F112A /* LoadingView.swift */; };
+		02D8D78925C1A20F00C0813F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D8D78825C1A20F00C0813F /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0247E34825BD54E3001F112A /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenResponseBody.swift; sourceTree = "<group>"; };
 		0247E34E25BD5C1F001F112A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		02D8D78825C1A20F00C0813F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		0247E2DC25B9A23D001F112A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				02D8D78725C1A1D100C0813F /* SafariView */,
 				0247E33A25BC67D6001F112A /* WebView */,
 				0247E33425BC5DE9001F112A /* UserDetailView */,
 				0247E32F25BC5BA9001F112A /* HomeTabView */,
@@ -219,6 +222,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		02D8D78725C1A1D100C0813F /* SafariView */ = {
+			isa = PBXGroup;
+			children = (
+				02D8D78825C1A20F00C0813F /* SafariView.swift */,
+			);
+			path = SafariView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +312,7 @@
 				0247E2DE25B9A251001F112A /* ArticleListView.swift in Sources */,
 				0247E2D225B97646001F112A /* AuthenticatedUser.swift in Sources */,
 				0247E2F825B9E297001F112A /* ArticleRowView.swift in Sources */,
+				02D8D78925C1A20F00C0813F /* SafariView.swift in Sources */,
 				0247E34F25BD5C1F001F112A /* LoadingView.swift in Sources */,
 				0247E2BD25B97465001F112A /* QiitaReaderApp.swift in Sources */,
 				0247E2E625B9A7C8001F112A /* APIClientError.swift in Sources */,

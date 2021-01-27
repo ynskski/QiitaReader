@@ -10,6 +10,8 @@ import SwiftUI
 struct ArticleRowView: View {
     let article: Article
     
+    @State private var isPresentedSafariView = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -48,7 +50,15 @@ struct ArticleRowView: View {
                 Text("\(article.likesCount)")
                     .font(.caption)
             }
-        }.padding(4)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isPresentedSafariView.toggle()
+        }
+        .sheet(isPresented: $isPresentedSafariView) {
+            SafariView(url: URL(string: article.url)!).edgesIgnoringSafeArea(.bottom)
+        }
+        .padding(4)
     }
     
     func ymdFormattedDate(_ date: String) -> String {
