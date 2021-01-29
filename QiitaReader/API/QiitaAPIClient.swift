@@ -31,7 +31,7 @@ final class QiitaAPIClient: APIClient {
         var urlComponents = URLComponents(string: "\(baseURL)/access_tokens")!
         
         let env = ProcessInfo.processInfo.environment
-        guard let client_id = env["client_id"], let client_secret = env["client_secret"] else {
+        guard let client_id = env["client_id"] else {
             return Fail(error: APIClientError.noClientIdOrSecret).eraseToAnyPublisher()
         }
         

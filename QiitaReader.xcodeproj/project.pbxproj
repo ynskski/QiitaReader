@@ -29,6 +29,7 @@
 		0247E34925BD54E3001F112A /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34825BD54E3001F112A /* UserDetailViewModel.swift */; };
 		0247E34C25BD5B03001F112A /* AccessTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */; };
 		0247E34F25BD5C1F001F112A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E34E25BD5C1F001F112A /* LoadingView.swift */; };
+		0273EBBE25C41E1F008FEE79 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273EBBD25C41E1F008FEE79 /* Secrets.swift */; };
 		02D8D78925C1A20F00C0813F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D8D78825C1A20F00C0813F /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		0247E34825BD54E3001F112A /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		0247E34B25BD5B03001F112A /* AccessTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenResponseBody.swift; sourceTree = "<group>"; };
 		0247E34E25BD5C1F001F112A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		0273EBBD25C41E1F008FEE79 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		02D8D78825C1A20F00C0813F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				0247E2C025B9746B001F112A /* Assets.xcassets */,
 				0247E2C525B9746B001F112A /* Info.plist */,
 				0247E2C225B9746B001F112A /* Preview Content */,
+				0273EBBD25C41E1F008FEE79 /* Secrets.swift */,
 			);
 			path = QiitaReader;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				0247E2D725B977F0001F112A /* APIClient.swift in Sources */,
 				0247E33625BC5E0F001F112A /* UserDetailView.swift in Sources */,
 				0247E2CE25B975BA001F112A /* Article.swift in Sources */,
+				0273EBBE25C41E1F008FEE79 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
