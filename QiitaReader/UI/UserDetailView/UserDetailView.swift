@@ -107,11 +107,7 @@ struct UserDetailView: View {
     var requireLoginView: some View {
         VStack {
             Button {
-                if QiitaAPIClient.oauthUrlString != nil {
-                    isPresentedOauthPage.toggle()
-                } else {
-                    isPresentedAlert.toggle()
-                }
+                isPresentedOauthPage.toggle()
             } label: {
                 Text("ログイン")
                     .font(.headline)
@@ -122,7 +118,7 @@ struct UserDetailView: View {
             .background(Color.green)
             .disabled(viewModel.isLoading)
             .sheet(isPresented: $isPresentedOauthPage) {
-                WebView(url: QiitaAPIClient.oauthUrlString!, isPresented: $isPresentedOauthPage)
+                WebView(url: QiitaAPIClient.oauthUrlString, isPresented: $isPresentedOauthPage)
                     .onDisappear {
                         viewModel.login()
                     }

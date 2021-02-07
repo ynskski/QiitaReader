@@ -18,22 +18,10 @@ final class QiitaAPIClient: APIClient {
         self.baseURL = baseURL
     }
     
-    static var oauthUrlString: String? {
-        let env = ProcessInfo.processInfo.environment
-        if let client_id = env["client_id"] {
-            return "https://qiita.com/api/v2/oauth/authorize?client_id=\(client_id)&scope=read_qiita"
-        } else {
-            return nil
-        }
-    }
+    static var oauthUrlString = "https://qiita.com/api/v2/oauth/authorize?client_id=\(client_id)&scope=read_qiita"
     
     func fetchAccessToken(code: String) -> AnyPublisher<AccessTokenResponseBody, Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/access_tokens")!
-        
-        let env = ProcessInfo.processInfo.environment
-        guard let client_id = env["client_id"] else {
-            return Fail(error: APIClientError.noClientIdOrSecret).eraseToAnyPublisher()
-        }
         
         let queryItems = [
             URLQueryItem(name: "client_id", value: client_id),
