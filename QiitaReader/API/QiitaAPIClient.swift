@@ -67,7 +67,11 @@ final class QiitaAPIClient: APIClient {
             URLQueryItem(name: "per_page", value: "50")
         ]
         urlComponents.queryItems = queryItems
-        let request = URLRequest(url: urlComponents.url!)
+        var request = URLRequest(url: urlComponents.url!)
+        
+        if let token = UserAuthenticator.accessToken {
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         return URLSession.DataTaskPublisher(request: request, session: .shared)
             .tryMap { data, response in
