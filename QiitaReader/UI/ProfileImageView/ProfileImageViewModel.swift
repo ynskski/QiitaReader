@@ -10,27 +10,27 @@ import UIKit
 
 final class ProfileImageViewModel: ObservableObject {
     @Published private(set) var image = UIImage(systemName: "photo")
-    
+
     private let qiitaApiClient = QiitaAPIClient.shared
-    
+
     private var cancellables: Set<AnyCancellable> = []
-    
+
     init(imageURL: String) {
         loadProfileImage(from: imageURL)
     }
-    
+
     func loadProfileImage(from imageURL: String) {
         guard let url = URL(string: imageURL) else {
             return
         }
-        
+
         qiitaApiClient
             .fetchProfileImage(url: url)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     break
-                case .failure(let error):
+                case let .failure(error):
                     print(error.localizedDescription)
                 }
             }, receiveValue: { uiImage in

@@ -11,7 +11,7 @@ enum APIClientError: LocalizedError {
     case unexpectedStatusCode(Int)
     case message(String, String, Int)
     case noClientIdOrSecret
-    
+
     var errorDescription: String? {
         switch self {
         case let .unexpectedStatusCode(statusCode):

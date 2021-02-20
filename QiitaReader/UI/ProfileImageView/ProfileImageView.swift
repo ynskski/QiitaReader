@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ProfileImageView: View {
     @ObservedObject var viewModel: ProfileImageViewModel
-    
+
     init(imageURL: String) {
         viewModel = ProfileImageViewModel(imageURL: imageURL)
     }
-    
+
     var body: some View {
         Image(uiImage: viewModel.image!)
             .resizable()

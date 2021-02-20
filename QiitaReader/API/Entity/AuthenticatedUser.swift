@@ -17,7 +17,7 @@ struct AuthenticatedUser: Decodable, Identifiable {
     var followeesCount: Int
     var followersCount: Int
     var profileImageURL: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case name

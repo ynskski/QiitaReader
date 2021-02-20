@@ -10,13 +10,12 @@ import SwiftUI
 
 struct SafariView: UIViewControllerRepresentable {
     typealias UIViewControllerType = SFSafariViewController
-    
+
     var url: URL
-    
-    func makeUIViewController(context: Context) -> SFSafariViewController {
+
+    func makeUIViewController(context _: Context) -> SFSafariViewController {
         return SFSafariViewController(url: url)
     }
-    
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
-    }
+
+    func updateUIViewController(_: SFSafariViewController, context _: Context) {}
 }

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct UserDetailView: View {
     @ObservedObject var viewModel = UserDetailViewModel()
-    
+
     @State private var isPresentedOauthPage = false
     @State private var isPresentedAlert = false
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -26,32 +26,32 @@ struct UserDetailView: View {
             .navigationTitle("User")
         }
     }
-    
+
     func userInfoView(_ user: AuthenticatedUser) -> some View {
         Form {
             Section {
                 HStack {
                     Spacer()
-                    
+
                     VStack(alignment: .center) {
                         ProfileImageView(imageURL: user.profileImageURL)
                             .frame(width: 60, height: 60)
-                        
+
                         Text("@\(user.id)")
                             .font(.callout)
-                        
+
                         HStack {
                             if let githubId = user.githubId {
                                 socialIconView("github", id: githubId)
                             }
-                            
+
                             if let twitterId = user.twitterId {
                                 socialIconView("twitter", id: twitterId)
                             }
                         }
-                        
+
                         Text(user.description)
-                        
+
                         HStack {
                             VStack(alignment: .center) {
                                 Text("\(user.itemsCount)")
@@ -77,11 +77,11 @@ struct UserDetailView: View {
                         .padding(.top)
                     }
                     .padding(4)
-                    
+
                     Spacer()
                 }
             }
-            
+
             Section(header: Text("my articles")) {
                 ForEach(viewModel.articles) { article in
                     ArticleRowView(article: article)
@@ -94,8 +94,8 @@ struct UserDetailView: View {
             }
         }
     }
-    
-    func socialIconView(_ service: String, id: String) -> some View {
+
+    func socialIconView(_ service: String, id _: String) -> some View {
         VStack(alignment: .center) {
             Image(service)
                 .resizable()
