@@ -42,11 +42,11 @@ struct UserDetailView: View {
                         
                         HStack {
                             if let githubId = user.githubId {
-                                socialIconView("GitHub", id: githubId)
+                                socialIconView("github", id: githubId)
                             }
                             
                             if let twitterId = user.twitterId {
-                                socialIconView("Twitter", id: twitterId)
+                                socialIconView("twitter", id: twitterId)
                             }
                         }
                         
