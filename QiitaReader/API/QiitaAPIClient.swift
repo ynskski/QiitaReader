@@ -103,7 +103,7 @@ final class QiitaAPIClient: APIClient {
             .eraseToAnyPublisher()
     }
     
-    func fetchArticle(with token: String, page: Int) -> AnyPublisher<[Article], Error> {
+    func fetchAuthenticatedUserItems(page: Int) -> AnyPublisher<[Article], Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/authenticated_user/items")!
         let queryItems = [
             URLQueryItem(name: "page", value: String(page)),
@@ -112,7 +112,10 @@ final class QiitaAPIClient: APIClient {
         urlComponents.queryItems = queryItems
         
         var request = URLRequest(url: urlComponents.url!)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        if let token = UserAuthenticator.accessToken {
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         return URLSession.DataTaskPublisher(request: request, session: .shared)
             .tryMap { data, response in

@@ -46,14 +46,10 @@ final class UserDetailViewModel: ObservableObject {
     }
     
     func loadArticles() {
-        guard let token = UserAuthenticator.accessToken else {
-            return
-        }
-        
         isLoading = true
         
         qiitaApiClient
-            .fetchArticle(with: token, page: 1)
+            .fetchAuthenticatedUserItems(page: 1)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
