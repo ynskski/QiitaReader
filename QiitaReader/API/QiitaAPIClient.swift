@@ -60,37 +60,18 @@ final class QiitaAPIClient: APIClient {
             .eraseToAnyPublisher()
     }
 
-    func fetchArticle(page: Int) -> AnyPublisher<[Article], Error> {
+    func fetchArticle(page: Int, query: String = "") -> AnyPublisher<[Article], Error> {
         var urlComponents = URLComponents(string: "\(baseURL)/items")!
-        let queryItems = [
+        var queryItems = [
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "per_page", value: "50"),
         ]
-        urlComponents.queryItems = queryItems
-        var request = URLRequest(url: urlComponents.url!)
-
-        if let token = UserAuthenticator.accessToken {
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if !query.isEmpty {
+            let searchQueryItem = URLQueryItem(name: "query", value: query)
+            queryItems.append(searchQueryItem)
         }
-
-        return URLSession.DataTaskPublisher(request: request, session: .shared)
-            .tryMap { data, response in
-                try self.throwResponseError(response, data: data)
-                return data
-            }
-            .decode(type: [Article].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-
-    func fetchArticle(page: Int, query: String) -> AnyPublisher<[Article], Error> {
-        var urlComponents = URLComponents(string: "\(baseURL)/items")!
-        let queryItems = [
-            URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "per_page", value: "50"),
-            URLQueryItem(name: "query", value: query),
-        ]
         urlComponents.queryItems = queryItems
+
         let request = URLRequest(url: urlComponents.url!)
 
         return URLSession.DataTaskPublisher(request: request, session: .shared)
