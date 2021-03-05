@@ -13,14 +13,30 @@ final class ArticleListViewModel: ObservableObject {
     @Published var isLoading = false
 
     private let qiitaApiClient = QiitaAPIClient.shared
+    var currentPageNum = 0
+    var searchText: String = "" {
+        didSet {
+            currentPageNum = 0
+        }
+    }
 
     private var cancellables: Set<AnyCancellable> = []
 
-    func loadArticles(page: Int) {
+    func loadArticles() {
+        currentPageNum += 1
+        
+        if searchText.isEmpty {
+            loadNewArticles()
+        } else {
+            searchArticles(query: searchText)
+        }
+    }
+    
+    func loadNewArticles() {
         isLoading = true
 
         qiitaApiClient
-            .fetchArticle(page: page)
+            .fetchArticle(page: currentPageNum)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -36,11 +52,11 @@ final class ArticleListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func loadArticles(page: Int, query: String) {
+    func searchArticles(query: String) {
         isLoading = true
 
         qiitaApiClient
-            .fetchArticle(page: page, query: query)
+            .fetchArticle(page: currentPageNum, query: query)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:

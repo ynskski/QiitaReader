@@ -17,13 +17,10 @@ struct ArticleListView: View {
                 Form {
                     Section {
                         TextField("Search", text: self.$searchText, onCommit: {
+                            viewModel.searchText = searchText
                             viewModel.articles = []
 
-                            if searchText.isEmpty {
-                                viewModel.loadArticles(page: 1)
-                            } else {
-                                viewModel.loadArticles(page: 1, query: searchText)
-                            }
+                            viewModel.loadArticles()
                         })
                             .keyboardType(.webSearch)
                     }
@@ -36,9 +33,7 @@ struct ArticleListView: View {
                 }
             }
             .onAppear {
-                if viewModel.articles.isEmpty {
-                    viewModel.loadArticles(page: 1)
-                }
+                viewModel.loadArticles()
             }
             .overlay(viewModel.isLoading ? AnyView(LoadingView()) : AnyView(EmptyView()))
             .navigationTitle("Articles")
