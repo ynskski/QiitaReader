@@ -17,6 +17,7 @@ final class ArticleListViewModel: ObservableObject {
     var searchText: String = "" {
         didSet {
             currentPageNum = 0
+            articles = []
         }
     }
 
@@ -67,8 +68,7 @@ final class ArticleListViewModel: ObservableObject {
 
                 self.isLoading = false
             }, receiveValue: { articles in
-                // TODO: - 追加の方法を考える
-                self.articles = articles
+                self.articles += articles
             })
             .store(in: &cancellables)
     }

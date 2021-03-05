@@ -18,7 +18,6 @@ struct ArticleListView: View {
                     Section {
                         TextField("Search", text: self.$searchText, onCommit: {
                             viewModel.searchText = searchText
-                            viewModel.articles = []
 
                             viewModel.loadArticles()
                         })
@@ -28,6 +27,11 @@ struct ArticleListView: View {
                     Section {
                         ForEach(viewModel.articles) { article in
                             ArticleRowView(article: article)
+                                .onAppear {
+                                    if article.id == viewModel.articles.last!.id {
+                                        viewModel.loadArticles()
+                                    }
+                                }
                         }
                     }
                 }
