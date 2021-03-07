@@ -15,6 +15,10 @@ final class UserDetailViewModel: ObservableObject {
     private let qiitaApiClient = QiitaAPIClient.shared
 
     private var cancellables: Set<AnyCancellable> = []
+    
+    init() {
+        loadUser()
+    }
 
     var user: AuthenticatedUser? {
         UserAuthenticator.authenticatedUser
