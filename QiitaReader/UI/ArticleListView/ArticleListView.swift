@@ -37,7 +37,9 @@ struct ArticleListView: View {
                 }
             }
             .onAppear {
-                viewModel.loadArticles()
+                if viewModel.articles.isEmpty {
+                    viewModel.loadArticles()
+                }
             }
             .overlay(viewModel.isLoading ? AnyView(LoadingView()) : AnyView(EmptyView()))
             .navigationTitle("Articles")
