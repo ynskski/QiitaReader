@@ -12,16 +12,17 @@ struct HomeTabView: View {
         TabView {
             UserDetailView()
                 .tabItem {
-                    Image(systemName: "person")
+                    Image(systemName: "person.fill")
                     Text("ユーザー")
                 }
 
             ArticleListView()
                 .tabItem {
-                    Image(systemName: "doc.text")
+                    Image(systemName: "doc.text.fill")
                     Text("記事")
                 }
         }
+        .accentColor(Color.primary)
     }
 }
 
